@@ -1,9 +1,13 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-    </head>
-    <body>
-        <p>404 not found</p>
-    </body>
-</html>
+<html lang="ja"><head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>令和さくら高等学院</title> <style> body { background-color: #f4f4f4; color: #333; font-family: Arial, sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; } a { color: #1e90ff; text-decoration: none; font-weight: bold; } a:hover { text-decoration: underline; } p { margin: 10px 0; } @media (prefers-color-scheme: dark) { body { background-color: #333; color: #f4f4f4; } a { color: #80CFFF; } a:hover { color: #ffffff; } .error-icon { color: #f4f4f4; } } </style> </head> <body> <a href="https://www.reiwa-sakura.net"> <img id="logo" src="https://reiwa-sakura.jp/images/logo-w.svg" height="45" alt="令和さくら高等学院"> </a> <p></p> <p>令和さくらのホームページは</p> <p>「reiwa-sakura.net」でございます。</p> <p><a href="https://www.reiwa-sakura.net">こちら</a>へお移動お願いいたします。</p>         <div style="position:fixed;bottom:5px"><iframe style="width: 100%;aspect-ratio:16 / 9;" src="https://www.youtube.com/embed/A7cp6OVa0Qc?si=tStdGQapBb5JaQiy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe></div>
+<script>
+const a=window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches;
+const b='https://reiwa-sakura.jp/images/';
+const c='logo-w.svg';
+const d='logo-b.svg';
+const f=document.getElementById('logo');
+if (a){f.src=b+c;}else{f.src=b+d;}
+window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change',(e)=>{if (e.matches){f.src=b+c;}else{f.src=b+d;}});
+</script>
+
+
+</body></html>
