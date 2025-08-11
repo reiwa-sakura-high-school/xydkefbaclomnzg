@@ -49,7 +49,7 @@
         xhr.open('GET', url, true);
         xhr.send();
     }
-    var textFileUrl = 'https://reiwa-sakura.jp/cafemenu/c.txt';
+    var textFileUrl = 'https://reiwa-sakura.jp/cafemenu/c.php';
     window.onload = function() {
         loadTextFile(textFileUrl);
     };
