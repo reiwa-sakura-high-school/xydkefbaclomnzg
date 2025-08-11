@@ -1,0 +1,69 @@
+<html lang="ja"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - 令和さくら高等学院</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+        a {
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .error-icon {
+            font-size: 5em;
+            margin-bottom: 20px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #333;
+                color: #f4f4f4;
+            }
+            a {
+                color: #80CFFF;
+            }
+            a:hover {
+                color: #ffffff;
+            }
+            .error-icon {
+                color: #f4f4f4;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo logo01">
+        <a href="https://www.reiwa-sakura.net/"><img id="logo" src="" height="45" alt="令和さくら高等学院"></a>
+    </div>
+    <h1>404 - ページが見つかりません</h1>
+    <p>申し訳ありませんが、お探しのページは存在しないか、移動されました。</p>
+    <p>
+        <a href="https://www.reiwa-sakura.net">ホームページに戻る</a>
+    </p>
+    <script>
+        const a=window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches;
+        const b='https://reiwa-sakura.jp/images/';
+        const c='logo-w.svg';
+        const d='logo-b.svg';
+        const f=document.getElementById('logo');
+        if (a){f.src=b+c;}else{f.src=b+d;}
+        window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change',(e)=>{if (e.matches){f.src=b+c;}else{f.src=b+d;}});
+    </script>
+</body></html>
