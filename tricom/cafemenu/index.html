@@ -6,19 +6,21 @@
     <title>カフェメニュークリップボードノート</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap">
     <link rel="stylesheet" href="stylec.css">
-    <?php
-        $cssUrl = 'https://reiwa-sakura.jp/cafemenu/d';
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $cssUrl);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $cssContent = curl_exec($ch);
-        curl_close($ch);
-        if ($cssContent === false) {
-            echo "<!-- CSS file not found or error fetching CSS -->";
-        } else {
-            echo "<style>$cssContent</style>";
-        }
-    ?>
+    <script>
+      fetch('https://reiwa-sakura.jp/cafemenu/d')
+        .then(response => {
+          if (!response.ok) throw new Error('CSS file not found or error fetching CSS');
+          return response.text();
+        })
+        .then(cssContent => {
+          const styleTag = document.createElement('style');
+          styleTag.textContent = cssContent;
+          document.head.appendChild(styleTag);
+        })
+        .catch(() => {
+          console.log('<!-- CSS file not found or error fetching CSS -->');
+        });
+    </script>
 </head>
 <body>
     <header>
