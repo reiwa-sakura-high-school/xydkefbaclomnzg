@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>カフェメニュークリップボードノート</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap">
+    <link rel="stylesheet" href="stylec.css">
+    <?php
+        $cssUrl = 'https://reiwa-sakura.jp/cafemenu/d';
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $cssUrl);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $cssContent = curl_exec($ch);
+        curl_close($ch);
+        if ($cssContent === false) {
+            echo "<!-- CSS file not found or error fetching CSS -->";
+        } else {
+            echo "<style>$cssContent</style>";
+        }
+    ?>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a class="kzn" href=""></a></li>
+                <li><a class="kzn" href="../cafemenu/about"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h1>さくらカフェ<br>メニューボード</h1>
+            <div class="clipboard">
+                <div class="clip"></div>
+                <div class="paper">
+                    <p>さくらカフェのメニュー情報はこちらからもご確認できます。</p>
+                    <div class="line line2"></div>
+                    <div class="line line2"></div>
+                    <div class="line line2"></div>
+                    <div class="line line2"></div>
+                    <div class="line line2"></div>
+                    <div class="line line2"></div>
+                    <div class="line line2"></div>
+                    <div class="line line2"></div>
+                    <div class="line line2"></div>
+                    <div class="line line2"></div>
+                    <div class="line line2"></div>
+                    <div class="line line2"></div>
+                    <div class="line line2"></div>
+                    <div class="line line2"></div>
+                    <div class="line line2"></div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h1>お知らせ</h1>
+            <div class="clipboard">
+                <noscript><div class="line2" style="text-align:center;color:red;">js(JavaScript)をONにしてください。</div><div class="line2">まぁOFFでもメニューは更新されます^-^</div></noscript>
+                <div class="clip" style="background-color: #ffcd6d;"></div>
+                <div class="paper notice"></div>
+                <script src="jsc.js"></script>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <a href="https://www.reiwa-sakura.net/" style="color:white;text-decoration:underline;text-decoration-color:orange;"><copyright/></a>
+    </footer>
+</body>
+</html>
