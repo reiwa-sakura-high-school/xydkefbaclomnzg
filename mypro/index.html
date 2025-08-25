@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>令和さくら高等学院内マイプロ管理システムinfo</title>
+<style>
+    body {
+        font-family: "Hiragino Sans", "Noto Sans JP", sans-serif;
+        background: #f9fafb;
+        color: #333;
+        margin: 0;
+        padding: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+    .container {
+        background: #fff;
+        padding: 30px;
+        border-radius: 16px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        max-width: 600px;
+        text-align: center;
+    }
+    h1 {
+        margin-top: 0;
+        color: #1a202c;
+        font-size: 1.8rem;
+    }
+    p {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: #555;
+    }
+    footer {
+        margin-top: 20px;
+        font-size: 0.9rem;
+        color: #666;
+    }
+</style>
+<script>
+    (function() {
+        if (location.search) {
+            const cleanUrl = location.origin + location.pathname;
+            history.replaceState(null, '', cleanUrl);
+        }
+    })();
+</script>
+</head>
+<body>
+    <div class="container">
+        <h1>令和さくら高等学院内マイプロ管理システム</h1>
+        <p>このQRコードは令和さくら高等学院の建物内のネットワークに接続された、指定された端末のみ操作が行える仕組みです。</p>
+        <footer>
+            <p>© 2025 令和さくら高等学院<br>制作: Aoyama, Hashimoto</p>
+        </footer>
+    </div>
+</body>
+</html>
