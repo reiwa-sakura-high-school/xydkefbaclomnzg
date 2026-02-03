@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>広報予定カレンダー</title>
+	<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+		}
+		.none-string {
+			margin: 0 30px;
+		}
+		#page {
+			width: 287mm;
+			height: 200mm;
+			padding: 5mm;
+			box-sizing: border-box;
+			display: flex;
+			flex-direction: column;
+		}
+		#calendar-title {
+			text-align: center;
+			font-size: 23px;
+			font-weight: bold;
+			margin-bottom: 5mm;
+			flex: 0 0 auto;
+		}
+		#calendar {
+			flex: 1 1 auto;
+			display: flex;
+			flex-direction: column;
+		}
+		.fc,
+		.fc-view-harness,
+		.fc-view,
+		.fc-daygrid {
+			flex: 1 1 auto;
+			height: 100%;
+		}
+		.fc-daygrid-body,
+		.fc-daygrid-body > table,
+		.fc-daygrid-body tbody {
+			height: 100%;
+		}
+		.fc-daygrid-body tr {
+			height: calc(100% / var(--fc-week-count));
+		}
+		.fc-header-toolbar {
+			display: none !important;
+		}
+		.fc-daygrid-event,
+		.fc-daygrid-event .fc-event-title {
+			white-space: normal !important;
+			word-break: break-word;
+			line-height: 1.2;
+		}
+		@media print {
+			@page {
+				size: A4 landscape;
+				margin: 0;
+			}
+			body {
+				margin: 0;
+			}
+			a {
+				color: inherit;
+				text-decoration: none;
+			}
+			.none-string {
+				display: none;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="none-string"><p>広報関係者 各位<br>令和さくら高等学院 関係者各位<br><br>お疲れ様です。<br><span id="none-string-tuki"></span>を共有させていただきます。<br><br>公開予定動画は<span style="background-color: #f4a261;">オレンジ色</span>で書かれています。<br>クリックすることができますが、公開日時設定を行っている物は表示されないかもしれません。</p></div>
+	<div id="page">
+		<div id="calendar-title"></div>
+		<div id="calendar"></div>
+	</div>
+	<div class="none-string"><p>よろしくお願いいたします。</p></div>
+	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+	<script>
+		document.addEventListener('DOMContentLoaded', async function () {
+			const params = new URLSearchParams(location.search);
+			const y = parseInt(params.get('y'), 10);
+			const m = parseInt(params.get('m'), 10);
+			const today = new Date();
+			const year  = (y && y >= 2000) ? y : today.getFullYear();
+			const month = (m && m >= 1 && m <= 12) ? m : today.getMonth() + 1;
+			document.getElementById('calendar-title').textContent = `${year}年${month}月 の広報予定`;
+			document.getElementById('none-string-tuki').textContent = `${year}年${month}月 の広報予定`;
+			const firstDay = new Date(year, month - 1, 1);
+			const lastDay  = new Date(year, month, 0);
+			const weekCount = Math.ceil((firstDay.getDay() + lastDay.getDate()) / 7);
+			document.documentElement.style.setProperty('--fc-week-count', weekCount);
+			const [events1, events2] = await Promise.all([
+				fetch('https://reiwa-sakura.jp/kouhou/calendar_export/calendar1').then(r => r.json()),
+				fetch('https://reiwa-sakura.jp/kouhou/calendar_export/calendar2').then(r => r.json())
+			]);
+			const calendar2Events = events2.map(e => ({
+				...e,
+				backgroundColor: '#f4a261',
+				borderColor: '#f4a261',
+				textColor: '#000',
+				extendedProps: {
+					...e.extendedProps,
+					source: 'calendar2'
+				}
+			}));
+			const calendar1Events = events1.map(e => ({
+				...e,
+				extendedProps: {
+					...e.extendedProps,
+					source: 'calendar1'
+				}
+			}));
+			const calendar = new FullCalendar.Calendar(
+				document.getElementById('calendar'),
+				{
+					initialView: 'dayGridMonth',
+					initialDate: new Date(year, month - 1, 1),
+					locale: 'ja',
+					headerToolbar: false,
+					height: 'auto',
+					fixedWeekCount: false,
+					showNonCurrentDates: false,
+					events: [
+						...calendar1Events,
+						...calendar2Events
+					],
+					eventContent(arg) {
+						const ev = arg.event;
+						if (ev.extendedProps.source === 'calendar1') {
+							const start = ev.start
+								? ev.start.toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })
+								: '';
+							const end = ev.end
+								? ev.end.toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })
+								: '';
+							const time = (start && end) ? `${start}～${end} ` : '';
+							const place = ev.extendedProps.location
+								? ` (${ev.extendedProps.location})`
+								: '';
+							return {
+								html: `${time}${ev.title}${place}`
+							};
+						}
+
+						return true;
+					},
+					eventClick(info) {
+						if (info.event.url) {
+							window.open(info.event.url, '_blank');
+							info.jsEvent.preventDefault();
+						}
+					}
+				}
+			);
+			calendar.render();
+		});
+	</script>
+</body>
+</html>
