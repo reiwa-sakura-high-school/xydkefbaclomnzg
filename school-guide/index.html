@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<script>
+			const params=new URLSearchParams(window.location.search);
+			const y=params.get("y");
+			if(!/^\d{1,2}$/.test(y)){
+				document.write("年度が不正です。");
+				throw new Error();
+			}
+			document.title="令和"+y+"年度 学院のしおり";
+		</script>
+		<style>
+			html,body{
+				margin:0;
+				padding:0;
+				height:100%;
+			}
+			iframe{
+				border:none;
+				width:100%;
+				height:100%;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			const pdfPath="pdf/"+y+".pdf";
+			document.write('<iframe src="'+pdfPath+'"></iframe>');
+		</script>
+	</body>
+</html>
+
