@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Zoom参加</title>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			margin: 0;
+			min-height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: #f1f3f4;
+			font-family: "Zen Maru Gothic", sans-serif;
+			color: #202124;
+		}
+
+		.card {
+			width: 90%;
+			max-width: 480px;
+			background: #ffffff;
+			border-radius: 24px;
+			padding: 40px 32px;
+			text-align: center;
+			box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+		}
+
+		h1 {
+			margin: 0 0 16px;
+			font-size: 28px;
+			font-weight: 700;
+		}
+
+		p {
+			margin: 0 0 32px;
+			font-size: 16px;
+			line-height: 1.8;
+			color: #5f6368;
+		}
+
+		.button {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+			height: 56px;
+			border-radius: 16px;
+			background: #1a73e8;
+			color: #ffffff;
+			text-decoration: none;
+			font-size: 18px;
+			font-weight: 700;
+			transition: 0.2s ease;
+		}
+
+		.button:hover {
+			background: #1765cc;
+			transform: translateY(-1px);
+		}
+
+		.status {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+			height: 56px;
+			border-radius: 16px;
+			background: #e8eaed;
+			color: #5f6368;
+			font-size: 18px;
+			font-weight: 700;
+		}
+	</style>
+
+	<script>
+		const zoomUrl = "https://example.com";
+
+		window.addEventListener("DOMContentLoaded", () => {
+			const container = document.getElementById("zoom-area");
+
+			if (zoomUrl.trim() !== "") {
+				container.innerHTML = `
+					<a class="button" href="${zoomUrl}" target="_blank" rel="noopener noreferrer">
+						Zoomに参加する
+					</a>
+				`;
+			} else {
+				container.innerHTML = `
+					<div class="status">
+						現在準備中
+					</div>
+				`;
+			}
+		});
+	</script>
+</head>
+<body>
+	<div class="card">
+		<h1>Zoomミーティング</h1>
+		<p>
+			以下のボタンからZoomへ参加してください。
+		</p>
+
+		<div id="zoom-area"></div>
+	</div>
+</body>
+</html>
