@@ -9,161 +9,356 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
 
-	<style>
-		* {
-			box-sizing: border-box;
-		}
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-		body {
-			margin: 0;
-			padding: 24px;
-			background: #f1f3f4;
-			font-family: "Zen Maru Gothic", sans-serif;
-			color: #202124;
-		}
+        body {
+            margin: 0;
+            padding: 12px;
+            background: #0f172a;
+            font-family: "Zen Maru Gothic", sans-serif;
+            color: #f8fafc;
+        }
 
-		.wrapper {
-			width: 100%;
-			display: flex;
-			justify-content: center;
-		}
+        .wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
 
-		.card {
-			width: 100%;
-			max-width: 720px;
-			background: #ffffff;
-			border-radius: 24px;
-			padding: 40px 32px;
-			box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-		}
+        .card {
+            width: 100%;
+            max-width: 720px;
+            background: #111827;
+            border-radius: 22px;
+            padding: 26px 18px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+        }
 
-		h1 {
-			margin: 0 0 12px;
-			font-size: 30px;
-			line-height: 1.5;
-			font-weight: 700;
-			text-align: center;
-		}
+        h1 {
+            margin: 0 0 10px;
+            font-size: 24px;
+            line-height: 1.45;
+            font-weight: 700;
+            text-align: center;
+            color: #ffffff;
+        }
 
-		.subtitle {
-			margin: 0 0 32px;
-			text-align: center;
-			font-size: 16px;
-			line-height: 1.9;
-			color: #5f6368;
-		}
+        .subtitle {
+            margin: 0 0 26px;
+            text-align: center;
+            font-size: 14px;
+            line-height: 1.8;
+            color: #cbd5e1;
+        }
 
-		.button {
-			display: inline-flex;
-			align-items: center;
-			justify-content: center;
-			width: 100%;
-			height: 58px;
-			border-radius: 16px;
-			background: #1a73e8;
-			color: #ffffff;
-			text-decoration: none;
-			font-size: 18px;
-			font-weight: 700;
-			transition: 0.2s ease;
-		}
+        .notice-box {
+            background: linear-gradient(
+                135deg,
+                #1e1b4b,
+                #172554
+            );
+            border: 1px solid #4338ca;
+            border-radius: 18px;
+            padding: 20px 16px;
+            margin-bottom: 24px;
+        }
 
-		.button:hover {
-			background: #1765cc;
-			transform: translateY(-1px);
-		}
+        .notice-title {
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 8px;
+        }
 
-		.status {
-			display: inline-flex;
-			align-items: center;
-			justify-content: center;
-			width: 100%;
-			height: 58px;
-			border-radius: 16px;
-			background: #e8eaed;
-			color: #5f6368;
-			font-size: 18px;
-			font-weight: 700;
-		}
+        .notice-text {
+            font-size: 14px;
+            line-height: 2;
+            color: #e2e8f0;
+        }
 
-		.section {
-			margin-top: 40px;
-			padding-top: 32px;
-			border-top: 1px solid #e8eaed;
-		}
+        .highlight-blue {
+            color: #7dd3fc;
+            font-weight: 700;
+        }
 
-		.section h2 {
-			margin: 0 0 18px;
-			font-size: 22px;
-			font-weight: 700;
-		}
+        .highlight-yellow {
+            color: #fde047;
+            font-weight: 700;
+        }
 
-		.text {
-			font-size: 15px;
-			line-height: 2;
-			color: #5f6368;
-			margin-bottom: 18px;
-		}
+        .highlight-red {
+            color: #fca5a5;
+            font-weight: 700;
+        }
 
-		.info-box {
-			background: #f8f9fa;
-			border-radius: 16px;
-			padding: 20px;
-			margin-bottom: 20px;
-		}
+        .highlight-green {
+            color: #86efac;
+            font-weight: 700;
+        }
 
-		.info-item {
-			margin-bottom: 12px;
-			font-size: 15px;
-			line-height: 1.8;
-		}
+        .host-box {
+            margin-top: 20px;
+            padding: 16px;
+            border-radius: 16px;
+            background: rgba(255,255,255,0.05);
+        }
 
-		.info-item:last-child {
-			margin-bottom: 0;
-		}
+        .host-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
 
-		ul {
-			padding-left: 20px;
-			color: #5f6368;
-			line-height: 2;
-			font-size: 15px;
-		}
+        .host-item {
+            font-size: 14px;
+            line-height: 1.9;
+            color: #dbeafe;
+        }
 
-		@media (max-width: 600px) {
-			.card {
-				padding: 32px 24px;
-			}
+        .agree-box {
+            margin-top: 20px;
+            padding: 16px;
+            border-radius: 16px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
 
-			h1 {
-				font-size: 24px;
-			}
+        .check-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            line-height: 1.8;
+            color: #f8fafc;
+        }
 
-			.section h2 {
-				font-size: 20px;
-			}
-		}
-	</style>
+        .check-label input {
+            margin-top: 4px;
+            width: 19px;
+            height: 19px;
+            accent-color: #22c55e;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .check-label.locked {
+            opacity: 0.9;
+            cursor: default;
+        }
+
+        .zoom-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 56px;
+            border-radius: 16px;
+            background: #2563eb;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 700;
+            transition: 0.2s ease;
+            margin-top: 20px;
+        }
+
+        .zoom-button:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+        }
+
+        .zoom-button.disabled {
+            background: #334155;
+            color: #94a3b8;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        .section {
+            margin-top: 34px;
+            padding-top: 26px;
+            border-top: 1px solid #374151;
+        }
+
+        .section h2 {
+            margin: 0 0 16px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .text {
+            font-size: 14px;
+            line-height: 1.95;
+            color: #d1d5db;
+            margin-bottom: 16px;
+        }
+
+        .info-box {
+            background: #0f172a;
+            border-radius: 16px;
+            padding: 18px 16px;
+            margin-bottom: 18px;
+            border: 1px solid #334155;
+        }
+
+        .info-item {
+            margin-bottom: 10px;
+            font-size: 14px;
+            line-height: 1.8;
+            color: #d1d5db;
+        }
+
+        .info-item strong {
+            color: #ffffff;
+        }
+
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        ul {
+            padding-left: 18px;
+            color: #d1d5db;
+            line-height: 1.9;
+            font-size: 14px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            border-radius: 14px;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.2s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-1px);
+        }
+
+        @media (min-width: 768px) {
+
+            body {
+                padding: 24px;
+            }
+
+            .card {
+                padding: 40px 32px;
+                border-radius: 28px;
+            }
+
+            h1 {
+                font-size: 30px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+            }
+
+            .notice-box {
+                padding: 28px;
+            }
+
+            .notice-title {
+                font-size: 22px;
+            }
+
+            .notice-text {
+                font-size: 16px;
+            }
+
+            .zoom-button {
+                height: 62px;
+                font-size: 20px;
+            }
+
+            .section h2 {
+                font-size: 22px;
+            }
+
+            .text,
+            .info-item,
+            ul,
+            .host-item,
+            .check-label {
+                font-size: 15px;
+            }
+        }
+    </style>
 
 	<script>
-		const zoomUrl = "";
+		const zoomUrl = "https://us06web.zoom.us/j/86247110233?pwd=PUcT8bmzv05V9Nc240wWaaF2bF3awb.1&uname=株式会社サーバント_";
 
 		window.addEventListener("DOMContentLoaded", () => {
-			const container = document.getElementById("zoom-area");
+
+			const zoomArea = document.getElementById("zoom-area");
+			const checkbox = document.getElementById("agree-check");
+			const checkboxLabel = document.getElementById("agree-label");
 
 			if (zoomUrl.trim() !== "") {
-				container.innerHTML = `
-					<a class="button" href="${zoomUrl}" target="_blank" rel="noopener noreferrer">
+
+				zoomArea.innerHTML = `
+					<a
+						id="join-button"
+						class="zoom-button disabled"
+						href="${zoomUrl}"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
 						Zoomに参加する
 					</a>
 				`;
+
 			} else {
-				container.innerHTML = `
-					<div class="status">
+
+				zoomArea.innerHTML = `
+					<div
+						class="zoom-button disabled"
+						style="display:flex;"
+					>
 						現在準備中...
 					</div>
-                    <div>(ZoomURLが設定されていません)</div>
+
+					<div
+						style="
+							margin-top:12px;
+							text-align:center;
+							color:#94a3b8;
+							font-size:14px;
+						"
+					>
+						(ZoomURLが設定されていません)
+					</div>
 				`;
 			}
+
+			checkbox.addEventListener("change", () => {
+
+				if (checkbox.checked) {
+
+					const joinButton = document.getElementById("join-button");
+
+					if (joinButton) {
+						joinButton.classList.remove("disabled");
+					}
+
+					checkbox.disabled = true;
+					checkboxLabel.classList.add("locked");
+				}
+			});
 		});
 	</script>
 </head>
@@ -171,7 +366,7 @@
 <body>
 
 	<div class="wrapper">
-
+	<div style="text-align: center;">職員用</div>
 		<div class="card">
 
 			<h1>
@@ -182,10 +377,87 @@
 				すべての保護者を支えるまなざしを育てる
 			</p>
 
-			<div id="zoom-area"></div>
+			<div class="notice-box">
+
+				<div class="notice-title">
+					📢 ご参加前のご案内
+				</div>
+
+				<div class="notice-text">
+					Zoom入室時には、
+					<span class="highlight-blue">
+						「株式会社サーバント_ 」
+					</span>
+					までが入力された状態になっています。<br>
+
+					<span class="highlight-yellow">
+						アンダーバー ( _ ) の後ろ
+					</span>
+					に、
+					<span class="highlight-green">
+						<u>お名前をご入力</u>
+					</span>
+					ください。<br><br>
+
+					ご参加の際は、
+					<span class="highlight-red">
+						マイクをミュート
+					</span>
+					に設定をお願いいたします。<br>
+
+					<span class="highlight-green">
+						※顔出し不要です。
+					</span>
+
+				</div>
+
+				<div class="host-box">
+
+					<div class="host-title">
+						主催からのメッセージ
+					</div>
+
+					<div class="host-item">
+						🔑 ミーティングID：000 1111 2222
+					</div>
+
+					<div class="host-item">
+						🔐 パスコード：012345
+					</div>
+
+					<div class="host-item">
+						✖ 参加者の皆さまによる録画・録音はご遠慮くださいますようお願いいたします。
+					</div>
+
+				</div>
+
+				<div class="agree-box">
+
+					<label
+						id="agree-label"
+						class="check-label"
+					>
+
+						<input
+							type="checkbox"
+							id="agree-check"
+						>
+
+						<div>
+							上記のご案内内容をご確認いただき、
+							ご協力いただける方はチェックをお願いいたします。
+						</div>
+
+					</label>
+
+				</div>
+
+				<div id="zoom-area"></div>
+
+			</div>
 
 			<div class="section">
-				<div>職員用</div>
+
 				<h2>講演概要</h2>
 
 				<p class="text">
@@ -262,21 +534,23 @@
 
 			</div>
 
-            <div style="margin-top:16px;">
-                <a
-                    class="button"
-                    href="https://onsenkosodate.peatix.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style="
-                        background:#34a853;
-                        height:52px;
-                        font-size:16px;
-                    "
-                >
-                    イベント詳細を見る
-                </a>
-            </div>
+			<div style="margin-top:20px;">
+
+				<a
+					class="button"
+					href="https://onsenkosodate.peatix.com"
+					target="_blank"
+					rel="noopener noreferrer"
+					style="
+						background:#16a34a;
+						height:54px;
+						font-size:16px;
+					"
+				>
+					イベント詳細を見る
+				</a>
+
+			</div>
 
 		</div>
 
